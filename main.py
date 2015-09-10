@@ -31,10 +31,10 @@ if __name__ == "__main__":
     fig, writer = generate_writer()
 
     # Generate an image of the neural network before training
-    print "Generating an image of the neural network before"
+    print "Generating an image of a new neural network"
     network.do_not_think()
     network.draw()
-    take_still("neural_network_before.png")
+    take_still("results/new_neural_network.png")
 
     # Generate a video of the neural network learning
     print "Generating a video of the neural network learning."
@@ -53,15 +53,27 @@ if __name__ == "__main__":
     print "Success! Open the file " + parameters.video_file_name + " to view the video."
 
     # Generate an image of the neural network after training
-    print "Generating an image of the neural network after"
+    print "Generating an image of a trained neural network"
     network.do_not_think()
     network.draw()
-    take_still("neural_network_after.png")
+    take_still("results/trained_neural_network.png")
 
     # Consider a new situation
-    new_situation = [1, 1, 0]
-    print "Considering a new situation " + str(new_situation) + "?"
-    print network.think(new_situation)
-    network.draw()
-    take_still("neural_network_new_situation.png")
+    while True:
+        print "Enter new input sequence"
+        new_input = raw_input()
+        new_input_list = [int(i) for i in new_input]
+        print "Considering a new situation " + str(new_input_list)
+        print "Prediction: ", network.think(new_input_list)
+        network.draw()
+        file_name = "results/neural_network_%s.png" % new_input
+        take_still(file_name)
+        print "Check out %s" % file_name
+
+    # Consider a new situation
+    # new_situation = [1, 1, 0]
+    # print "Considering a new situation " + str(new_situation) + "?"
+    # print network.think(new_situation)
+    # network.draw()
+    # take_still("neural_network_new_situation.png")
 

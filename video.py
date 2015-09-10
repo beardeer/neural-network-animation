@@ -25,8 +25,8 @@ def annotate_frame(i, e, average_error, example):
     pyplot.text(1, parameters.output_y_position - 1, str(example.output))
     pyplot.text(1, parameters.bottom_margin + 1, "Inputs:")
     pyplot.text(1, parameters.bottom_margin, str(example.inputs))
-    if average_error:
-        error_bar(average_error)
+    # if average_error:
+    #     error_bar(average_error)
 
 
 def error_bar(average_error):
